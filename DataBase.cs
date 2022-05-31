@@ -118,11 +118,6 @@ namespace SQLdatabase
             fillList();
         }
 
-        public static List<Worker> GetWorkers()
-        {
-            return workers;
-        }
-
         public static void fillGrid()
         {
             dataGrid.Rows.Clear();
@@ -267,12 +262,6 @@ namespace SQLdatabase
                 workers.Sort((w1, w2) => w1.ID.CompareTo(w2.ID));
             }
             fillGrid();
-        }
-
-        public static void changeSortMode(int mode)
-        {
-            //сортировать по убыванию или возрастанию
-            
         }
     }
 }
