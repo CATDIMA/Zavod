@@ -56,19 +56,19 @@
             // 
             // LoginTextBox
             // 
-            this.LoginTextBox.Font = new System.Drawing.Font("Anime Ace v05", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LoginTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LoginTextBox.Location = new System.Drawing.Point(12, 179);
             this.LoginTextBox.Name = "LoginTextBox";
-            this.LoginTextBox.Size = new System.Drawing.Size(260, 28);
+            this.LoginTextBox.Size = new System.Drawing.Size(260, 29);
             this.LoginTextBox.TabIndex = 2;
             // 
             // PasswordTextBox
             // 
-            this.PasswordTextBox.Font = new System.Drawing.Font("Anime Ace v05", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.PasswordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.PasswordTextBox.Location = new System.Drawing.Point(12, 244);
             this.PasswordTextBox.Name = "PasswordTextBox";
             this.PasswordTextBox.PasswordChar = '*';
-            this.PasswordTextBox.Size = new System.Drawing.Size(260, 28);
+            this.PasswordTextBox.Size = new System.Drawing.Size(260, 29);
             this.PasswordTextBox.TabIndex = 3;
             // 
             // label2

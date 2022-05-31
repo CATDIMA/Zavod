@@ -15,23 +15,17 @@ namespace Zavod
 {
     public partial class LoginForm : Form
     {
-        private Regex LoginRegex = new Regex("/^[a-zA-Z](.[a-zA-Z0-9_-]*)$/");
-        private Regex PasswordRegex = new Regex("/.*([a-z]+[A-Z]+[0-9]+|[a-z]+[0-9]+[A-Z]+|[A-Z]+[a-z]+[0-9]+|[A-Z]+[0-9]+[a-z]+|[0-9]+[a-z]+[A-Z]+|[0-9]+[A-Z]+[a-z]+).*/");
         private Regex IPregex = new Regex("([0-9]{1,3}[\\.]){3}[0-9]{1,3}");
 
         private bool Check()
         {
-            if(!LoginRegex.IsMatch(LoginTextBox.Text))
-            {
-                return false;
-            }
-            if(!PasswordRegex.IsMatch(PasswordTextBox.Text))
-            {
-                return false;
-            }
             if(!IPregex.IsMatch(IPTextBox.Text))
             {
                 return false;
+            }
+            else
+            {
+                Database.IP = IPTextBox.Text;
             }
             return true;
         }
@@ -63,12 +57,12 @@ namespace Zavod
 
         private void EnterButton_Click(object sender, EventArgs e)
         {
-            /*bool isOK = Check();
+            bool isOK = Check();
             if(!isOK)
             {
                 ErrorLabel.Visible = true;
                 return;
-            }*/
+            }
 
             string UserLogin = LoginTextBox.Text;
             string UserPassword = PasswordTextBox.Text;
@@ -77,7 +71,7 @@ namespace Zavod
             DataTable dataTable = new DataTable();
             MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter();
 
-            MySqlCommand command = new MySqlCommand("SELECT * FROM 'Users' WHERE 'login' = @UL AND 'pass' = @UP;", database.GetConnection());
+            MySqlCommand command = new MySqlCommand("SELECT * FROM `Users` WHERE `login` = @UL AND `pass` = @UP;", database.GetConnection());
             command.Parameters.Add("@UL", MySqlDbType.VarChar).Value = UserLogin;
             command.Parameters.Add("@UP", MySqlDbType.VarChar).Value = UserPassword;
 
@@ -86,22 +80,25 @@ namespace Zavod
 
             if(dataTable.Rows.Count > 0)
             {
-                MessageBox.Show("0_0");
+                Company.login = UserLogin;
+                Company.companyName = dataTable.Rows[0].ItemArray[3].ToString();
+                this.Hide();
+                MainForm mainForm = new MainForm();
+                mainForm.Show();
             }
             else
             {
                 MessageBox.Show("Не работает :(");
+                return;
             }
         }
 
         private void RegButton_Click(object sender, EventArgs e)
         {
-            bool isOK = Check();
-            if (!isOK)
-            {
-                ErrorLabel.Visible = true;
-                return;
-            }
+            Database.IP = IPTextBox.Text;
+            this.Hide();
+            RegForm regForm = new RegForm();
+            regForm.Show();
         }
     }
 }
